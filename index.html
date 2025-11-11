@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MAÇ TEKRARLARI — İNDİRME MERKEZİ</title>
+    <title>Mexy Archive </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -36,17 +36,40 @@
         .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff6b6b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#0b0c0f}
         h1{font-size:20px;margin:0}
         p.lead{margin:0;color:var(--muted);font-size:13px}
-        .controls{display:flex;gap:10px;align-items:center}
-        .search{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 12px;border-radius:10px;color:var(--muted);min-width:220px}
-
+        
+        .controls{
+            display:flex;
+            gap:10px;
+            align-items:center;
+            flex-wrap: wrap; /* Küçük ekranlarda alt satıra geçsin */
+            justify-content: flex-end;
+        }
+        .search, .filter-select{
+            background:var(--glass);
+            border:1px solid rgba(255,255,255,0.03);
+            padding:10px 12px;
+            border-radius:10px;
+            color:var(--muted);
+            min-width:180px;
+            appearance: none; /* Select'in varsayılan stilini kaldırmak için */
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239aa0a6'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+        }
+        .filter-select {
+            cursor: pointer;
+            padding-right: 30px; /* Ok için boşluk */
+        }
+        
         .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
         .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;min-height:320px}
         .cover{height:160px;background:#0b0c0f;background-size:cover;background-position:center}
         .meta{padding:14px 14px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+        .category{font-size:12px; color:var(--accent); font-weight: 600; text-transform: uppercase;}
         .title{font-weight:600;font-size:15px;margin:0}
         .date{font-size:13px;color:var(--muted)}
         .actions{margin-top:auto}
-        /* İndir butonu artık tek ve tam genişlikte */
         .btn{width:100%;padding:12px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600;font-size:16px;}
         .btn.download{background:var(--accent);color:#0b0c0f}
         .btn:active{transform:translateY(1px)}
@@ -57,6 +80,8 @@
 
         @media (max-width:600px){
             .cover{height:120px}
+            .controls{justify-content: center;}
+            .search, .filter-select{min-width: 100%;}
         }
     </style>
 </head>
@@ -71,13 +96,16 @@
                 </div>
             </div>
             <div class="controls">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">Tüm Ligler</option>
+                    </select>
                 <input id="search" class="search" placeholder="Maç ara (ör. Galatasaray)" />
             </div>
         </header>
 
         <main>
             <div id="grid" class="grid"></div>
-            <div id="empty" class="empty" style="display:none;margin-top:18px">Henüz maç yok. Lütfen 'matches' dizisine kayıt ekleyin.</div>
+            <div id="empty" class="empty" style="display:none;margin-top:18px">Filtreye uygun maç bulunamadı.</div>
         </main>
 
         <footer>
@@ -87,21 +115,36 @@
 
     <script>
         // Lütfen bu diziyi kendi maçlarınızla güncelleyin.
-        // driveLink'e Google Drive dosyanızın direkt indirme URL'sini koymayı unutmayın.
         const matches = [
             {
-                id: 'galatasaray-fener-2025',
-                title: 'Galatasaray vs Fenerbahçe — Full Match (4K)',
+                id: 'gs-fb-2025',
+                title: 'Galatasaray vs Fenerbahçe — Derbi Tekrarı',
                 date: '2025-05-04',
-                cover: 'https://images.unsplash.com/photo-1517927033932-b5d6ecf0f1a3?q=80&w=1200&auto=format&fit=crop',
-                driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_1' // Kendi ID'nizle değiştirin!
+                cover: 'https://images.unsplash.com/photo-1549476722-1d5964f9f4a1?q=80&w=1200&auto=format&fit=crop',
+                driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_1',
+                team_1: 'Galatasaray',
+                team_2: 'Fenerbahçe',
+                league: 'Süper Lig' // Kategori
             },
             {
                 id: 'basket-final-2025',
-                title: 'Basketbol Finali — 5. Maç Tekrarı',
+                title: 'Efes vs Real Madrid — Eurolig Finali',
                 date: '2025-11-10',
-                cover: 'https://images.unsplash.com/photo-1551698618-1dfe54d6825d?q=80&w=1200&auto=format&fit=crop',
-                driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_2' // Kendi ID'nizle değiştirin!
+                cover: 'https://images.unsplash.com/photo-1579952994916-291771141753?q=80&w=1200&auto=format&fit=crop',
+                driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_2',
+                team_1: 'Anadolu Efes',
+                team_2: 'Real Madrid',
+                league: 'Euroleague' // Kategori
+            },
+            {
+                id: 'e-spor-final',
+                title: 'E-Spor Finali — League of Legends',
+                date: '2025-10-20',
+                cover: 'https://images.unsplash.com/photo-1542751371-adc38148e658?q=80&w=1200&auto=format&fit=crop',
+                driveLink: 'https://drive.google.com/uc?export=download&id=DRIVE_FILE_ID_3',
+                team_1: 'Team X',
+                team_2: 'Team Y',
+                league: 'E-Spor' // Kategori
             }
         ];
 
@@ -109,6 +152,20 @@
         const empty = document.getElementById('empty');
         const yearSpan = document.getElementById('year');
         yearSpan.textContent = new Date().getFullYear();
+        const searchInput = document.getElementById('search');
+        const filterSelect = document.getElementById('categoryFilter');
+
+        // Tüm benzersiz ligleri/kategorileri bulur
+        const uniqueLeagues = [...new Set(matches.map(m => m.league).filter(l => l))].sort();
+        
+        // Filtre menüsünü doldurur
+        uniqueLeagues.forEach(league => {
+            const option = document.createElement('option');
+            option.value = league;
+            option.textContent = league;
+            filterSelect.appendChild(option);
+        });
+
 
         function renderList(list) {
             grid.innerHTML = '';
@@ -121,11 +178,12 @@
                 card.innerHTML = `
                     <div class="cover" style="background-image:url('${m.cover}')"></div>
                     <div class="meta">
+                        <div class="category">${escapeHtml(m.league)}</div>
                         <h3 class="title">${escapeHtml(m.title)}</h3>
                         <div class="date">${formatDate(m.date)}</div>
                         <div class="actions">
                             <a href="${decodeURIComponent(m.driveLink)}" target="_blank" class="btn download">
-                                📥 MAÇI İNDİR
+                                📥 ${escapeHtml(m.team_1)} vs ${escapeHtml(m.team_2)} Tekrarını İndir
                             </a>
                         </div>
                     </div>
@@ -134,12 +192,26 @@
             });
         }
 
-        // simple search
-        document.getElementById('search').addEventListener('input', (e)=>{
-            const q = e.target.value.trim().toLowerCase();
-            const filtered = matches.filter(m=>m.title.toLowerCase().includes(q));
+        // Ana filtreleme fonksiyonu
+        function filterAndSearch() {
+            const q = searchInput.value.trim().toLowerCase();
+            const selectedLeague = filterSelect.value;
+            
+            const filtered = matches.filter(m => {
+                const searchMatch = m.title.toLowerCase().includes(q) || 
+                                    m.team_1.toLowerCase().includes(q) || 
+                                    m.team_2.toLowerCase().includes(q);
+                                    
+                const leagueMatch = !selectedLeague || m.league === selectedLeague;
+                
+                return searchMatch && leagueMatch;
+            });
             renderList(filtered);
-        });
+        }
+
+        // Olay dinleyicileri
+        searchInput.addEventListener('input', filterAndSearch);
+        filterSelect.addEventListener('change', filterAndSearch);
 
         // helpers
         function formatDate(d){
