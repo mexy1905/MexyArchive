@@ -159,7 +159,7 @@
             margin-bottom: 5px;
             font-size: 14px;
             display: flex;
-            justify-content: center; /* Ortaya hizalandı */
+            justify-content: center; 
             align-items: center;
             flex-wrap: wrap; 
         }
@@ -174,11 +174,6 @@
         .link-item {
             padding: 0 15px; 
         }
-        .link-divider {
-            color: #666;
-            margin: 0 10px;
-        }
-
         /* Mobil uyum: Sadece kanal linki kaldığı için ayırıcı ve diğer mobil kurallar basitleştirildi. */
         @media (max-width: 600px) {
             .footer-links-area {
@@ -239,21 +234,28 @@
         <div class="match-grid" id="match-container">
             </div>
 
-        <div id="announcement-container" style="display: none; padding: 20px; text-align: left;">
-            <h2 style="color: #FFC300; border-bottom: 2px solid #333; padding-bottom: 10px;">MEXY ARCHIVE'A HOŞ GELDİNİZ!</h2>
+        <div id="announcement-container" style="display: none; padding: 20px; text-align: center;">
+            <h2 style="color: #FFC300; border-bottom: 2px solid #333; padding-bottom: 10px;">MEXY ARCHIVE'A HOŞ GELDİN!</h2>
+            
             <p style="font-size: 16px; line-height: 1.6; margin-top: 20px;">
-                **Bu site,Süper Lig'de oynanan maçları ücretsiz olarak indirmenize olanak tanır..**<br><br>
+                **Bu site, Trendyol Süper Lig'de oynanan maçları sizlere ücretsiz olarak indirmenize olanak tanır.**<br><br>
                 Amacımız, kaliteli ve kesintisiz arşiv içeriğini en hızlı şekilde sunmaktır.
-                <br><br>
-                **Nasıl Gezinilir?**
+            </p>
+            
+            <div style="max-width: 400px; margin: 0 auto; text-align: left;">
+                <p style="font-weight: bold; margin-top: 20px;">Nasıl Gezinilir?</p>
                 <ul>
                     <li>**Son Yüklenenler:** En güncel paylaşımlar hemen burada.</li>
                     <li>**Takımlar:** İstediğin takımın maçlarını hızlıca filtrele.</li>
                 </ul>
-                Tüm maçlar Drive üzerinden indirilebilir durumdadır. İyi seyirler!
+            </div>
+            
+            <p style="font-size: 16px; line-height: 1.6; margin-top: 10px;">
+                Tüm maçlar Drive linki üzerinden indirilebilir durumdadır. İyi seyirler!
             </p>
+            
             <p style="margin-top: 30px; color: #A0A0A0; font-style: italic;">
-                Yeni maçlar ve güncellemeler için Telegram Kanalımıza Gelebilirsiniz
+                Yeni maçlar ve güncellemeler için Telegram Kanalımıza Gelebilirsiniz.
             </p>
         </div>
 
@@ -267,7 +269,7 @@
             </div>
             
             <div style="margin-top: 10px;">
-                &copy; 2025 Mexy Archive 
+                &copy; 2024 Mexy Archive • Tüm hakları saklıdır.
             </div>
         </div>
     </div>
@@ -365,8 +367,8 @@
                 date: '2025-09-26',
                 cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/LUmuwIKI6Xon1K2Z_768x432.jpg',
                 driveLink: 'https://drive.google.com/file/d/1JbiCOhWj5Y0G1Ei8NNgHtNzfcbvbuJTj/view?usp=sharing', 
-                team_1: 'Alanyaspor',
-                team_2: 'Galatasaray',
+                team_1: 'Galatasaray',
+                team_2: 'Alanyaspor',
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
@@ -437,6 +439,9 @@
             // ------------------------------------------
             // YER TUTUCU MAÇLAR 
             // ------------------------------------------
+            { id: 'fenerbahce-dummy-1', title: 'Fenerbahçe Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Fenerbahçe', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'besiktas-dummy-1', title: 'Beşiktaş Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Beşiktaş', team_2: 'Rakip', league: 'Süper Lig' },
+            { id: 'samsun-dummy-1', title: 'Samsunspor Maçı (Örnek)', date: '2024-01-01', cover: '#', driveLink: '#', team_1: 'Samsunspor', team_2: 'Rakip', league: 'Süper Lig' }
         ];
 
         // Tarih Formatlama Fonksiyonu
@@ -483,16 +488,25 @@
             
             contentTitle.textContent = title;
 
-            // Gerçek maçları bul
+            // Gerçek maçları ve yer tutucuları ayır
             const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
+            const placeholderMatches = filteredMatches.filter(m => m.driveLink === '#');
             
-            // Sıralama
+            let matchesToDisplay = realMatches;
+            
+            // Sadece 'Son Yüklenenler' için sıralama ve kesme yap.
             if (title === 'Son Yüklenenler') {
-                realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+                // En yeniden en eskiye sırala
+                matchesToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
+                // Sadece ilk 8 taneyi göster
+                matchesToDisplay = matchesToDisplay.slice(0, 8);
+            } 
+            
+            // Eğer filtreleme sonucunda hiç gerçek maç yoksa, o takıma ait yer tutucuları göster.
+            if (matchesToDisplay.length === 0 && placeholderMatches.length > 0) {
+                matchesToDisplay = placeholderMatches;
             }
 
-            // 'Son Yüklenenler' için sadece ilk 8 taneyi al
-            let matchesToDisplay = (title === 'Son Yüklenenler') ? realMatches.slice(0, 8) : realMatches;
 
             // Sonuç Kontrolü
             if (matchesToDisplay.length === 0) {
