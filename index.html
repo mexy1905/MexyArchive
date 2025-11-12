@@ -30,7 +30,7 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #47F047; /* Yeşil Renge Ayarlandı */
+            color: #FFC300; /* Sarı Renge Geri Döndü */
             margin-bottom: 30px;
             text-align: center;
         }
@@ -43,10 +43,10 @@
             border-bottom: 1px solid #333;
             transition: background-color 0.2s, color 0.2s;
         }
-        /* BURASI GÜNCELLENDİ: Hover ve Aktif Rengi YEŞİL oldu */
+        /* HOVER VE AKTİF RENGİ SARIYA DÖNDÜ */
         .nav-link:hover, .nav-link.active {
             background-color: #333;
-            color: #47F047; /* Yeşil Renge Ayarlandı */
+            color: #FFC300; 
             padding-left: 10px;
         }
         .content {
@@ -102,7 +102,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: #47F047; /* Maç Başlığı Rengi de Yeşil oldu */
+            color: #FFC300; /* Maç Başlığı Rengi Sarıya Geri Döndü */
         }
         .match-meta {
             font-size: 14px;
@@ -113,7 +113,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #47F047; /* Buton Rengi Yeşil oldu */
+            background-color: #FFC300; /* Buton Rengi Sarıya Geri Döndü */
             color: #121212;
             text-align: center;
             text-decoration: none;
@@ -124,7 +124,7 @@
             transition: background-color 0.2s;
         }
         .download-button:hover {
-            background-color: #58F758;
+            background-color: #FFD700; /* Hover Rengi Sarıya Geri Döndü */
         }
         .footer {
             margin-top: 50px;
@@ -143,23 +143,14 @@
         <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
         <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
-        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #47F047;">Takımlar</div>
+        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
         <div id="nav-gs" class="nav-link team-link" data-filter="Galatasaray">Galatasaray</div>
         <div id="nav-fb" class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe</div>
         <div id="nav-bjk" class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş</div>
         <div id="nav-ts" class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor</div>
         <div id="nav-goztepe" class="nav-link team-link" data-filter="Göztepe">Göztepe</div>
         <div id="nav-samsun" class="nav-link team-link" data-filter="Samsunspor">Samsunspor</div>
-        <div id="nav-karagumruk" class="nav-link team-link" data-filter="Fatih Karagümrük">Karagümrük</div>
-        <div id="nav-gaziantep" class="nav-link team-link" data-filter="Gaziantep">Gaziantep</div>
-        <div id="nav-kayseri" class="nav-link team-link" data-filter="Kayserispor">Kayserispor</div>
-        <div id="nav-rizespor" class="nav-link team-link" data-filter="Çaykur Rizespor">Çaykur Rizespor</div>
-        <div id="nav-eyup" class="nav-link team-link" data-filter="Eyüpspor">Eyüpspor</div>
-        <div id="nav-konya" class="nav-link team-link" data-filter="Konyaspor">Konyaspor</div>
-        <div id="nav-alanya" class="nav-link team-link" data-filter="Alanyaspor">Alanyaspor</div>
-        <div id="nav-basaksehir" class="nav-link team-link" data-filter="Başakşehir">Başakşehir</div>
-        <div id="nav-kocaeli" class="nav-link team-link" data-filter="Kocaelispor">Kocaelispor</div>
-    </div>
+        </div>
 
     <div class="content">
         <div class="header">
@@ -183,7 +174,7 @@
         // Maç Verileri
         const matches = [
             // ------------------------------------------
-            // 1. ESKİ MAÇ: KARAGÜMRÜK (TAMAMLANDI)
+            // 1. ESKİ MAÇ: KARAGÜMRÜK (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -196,7 +187,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 2. ESKİ MAÇ: GAZİANTEP (TAMAMLANDI)
+            // 2. ESKİ MAÇ: GAZİANTEP (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
@@ -209,7 +200,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 3. ESKİ MAÇ: KAYSERİSPOR (TAMAMLANDI)
+            // 3. ESKİ MAÇ: KAYSERİSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
@@ -223,7 +214,7 @@
             },
             
             // ------------------------------------------
-            // 4. YENİ MAÇ: RİZESPOR (TAMAMLANDI)
+            // 4. YENİ MAÇ: RİZESPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -236,7 +227,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 5. YENİ MAÇ: EYÜPSPOR (TAMAMLANDI)
+            // 5. YENİ MAÇ: EYÜPSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
@@ -249,7 +240,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 6. YENİ MAÇ: KONYASPOR (TAMAMLANDI)
+            // 6. YENİ MAÇ: KONYASPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
@@ -262,7 +253,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 7. YENİ MAÇ: ALANYASPOR (TAMAMLANDI)
+            // 7. YENİ MAÇ: ALANYASPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
@@ -275,7 +266,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ (TAMAMLANDI)
+            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -288,7 +279,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 9. YENİ MAÇ: BAŞAKŞEHİR (TAMAMLANDI)
+            // 9. YENİ MAÇ: BAŞAKŞEHİR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
@@ -301,7 +292,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 10. YENİ MAÇ: GÖZTEPE (TAMAMLANDI)
+            // 10. YENİ MAÇ: GÖZTEPE (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
@@ -314,7 +305,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ (TAMAMLANDI)
+            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
@@ -327,7 +318,7 @@
                 league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
-            // 12. YENİ MAÇ: KOCAELİSPOR (TAMAMLANDI)
+            // 12. YENİ MAÇ: KOCAELİSPOR (LİNKLER TAMAM)
             // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
@@ -442,7 +433,7 @@
         // Sayfa yüklendiğinde varsayılan olarak 'Son Yüklenenler'i göster
         document.addEventListener('DOMContentLoaded', () => {
             const latestMatches = [...matches]; // Kopyasını al
-            // Varsayılan olarak 'Tüm Maçlar' linkini aktif yap
+            // Varsayılan olarak 'Son Yüklenenler' linkini aktif yap
             document.getElementById('nav-all').classList.remove('active');
             document.getElementById('nav-latest').classList.add('active');
             renderMatches(latestMatches, 'Son Yüklenenler');
