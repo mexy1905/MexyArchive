@@ -56,7 +56,6 @@
             padding-left: 10px;
         }
         .content {
-            /* PC DAHİL TÜM EKRANLARDA MARJİN YOK, TAM GENİŞLİK */
             margin-left: 0; 
             padding: 40px;
             flex-grow: 1;
@@ -67,7 +66,7 @@
             align-items: center;
             margin-bottom: 40px;
         }
-        /* ÜÇ NOKTA BUTONU PC DAHİL HER YERDE GÖRÜNÜR */
+        /* ÜÇ YATAY ÇİZGİ BUTONU İÇİN CSS */
         #menu-toggle {
             display: block; 
             background: none; 
@@ -194,7 +193,7 @@
 
     <div class="content">
         <div class="header">
-            <button id="menu-toggle">&#x22EE;</button>
+            <button id="menu-toggle" style="font-size: 28px;">&#9776;</button>
             <h1 class="page-title" id="content-title">Son Yüklenenler</h1>
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Maç başlığında ara...">
