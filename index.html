@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEXY ARCHIVE</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico"> <style>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+    <style>
         /* CSS Başlangıcı */
         body {
             font-family: Arial, sans-serif;
@@ -29,16 +30,9 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #FFC300;
+            color: #47F047; /* Yeşil Renge Ayarlandı */
             margin-bottom: 30px;
             text-align: center;
-        }
-        /* LOGO RESMİ STİLİ - logo.png dosyasını aynı klasöre kaydet */
-        .logo img {
-            width: 150px; /* Logonun genişliği */
-            height: auto;
-            display: block;
-            margin: 0 auto 10px auto; /* Ortalamak için */
         }
         .nav-link {
             padding: 10px 0;
@@ -49,9 +43,10 @@
             border-bottom: 1px solid #333;
             transition: background-color 0.2s, color 0.2s;
         }
+        /* BURASI GÜNCELLENDİ: Hover ve Aktif Rengi YEŞİL oldu */
         .nav-link:hover, .nav-link.active {
             background-color: #333;
-            color: #FFC300;
+            color: #47F047; /* Yeşil Renge Ayarlandı */
             padding-left: 10px;
         }
         .content {
@@ -107,7 +102,7 @@
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: #FFC300;
+            color: #47F047; /* Maç Başlığı Rengi de Yeşil oldu */
         }
         .match-meta {
             font-size: 14px;
@@ -118,7 +113,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #FFC300; /* Sarı buton rengi */
+            background-color: #47F047; /* Buton Rengi Yeşil oldu */
             color: #121212;
             text-align: center;
             text-decoration: none;
@@ -129,7 +124,7 @@
             transition: background-color 0.2s;
         }
         .download-button:hover {
-            background-color: #FFD700;
+            background-color: #58F758;
         }
         .footer {
             margin-top: 50px;
@@ -143,20 +138,27 @@
 <body>
 
     <div class="sidebar">
-        <div class="logo">
-            <img src="logo.png" alt="Mexy Archive Logo">
-            MEXY ARCHIVE
-        </div>
+        <div class="logo">MEXY ARCHIVE</div>
+        
         <div id="nav-all" class="nav-link active" data-filter="all">Tüm Maçlar</div>
         <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
-        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
+        <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #47F047;">Takımlar</div>
         <div id="nav-gs" class="nav-link team-link" data-filter="Galatasaray">Galatasaray</div>
         <div id="nav-fb" class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe</div>
         <div id="nav-bjk" class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş</div>
         <div id="nav-ts" class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor</div>
         <div id="nav-goztepe" class="nav-link team-link" data-filter="Göztepe">Göztepe</div>
         <div id="nav-samsun" class="nav-link team-link" data-filter="Samsunspor">Samsunspor</div>
+        <div id="nav-karagumruk" class="nav-link team-link" data-filter="Fatih Karagümrük">Karagümrük</div>
+        <div id="nav-gaziantep" class="nav-link team-link" data-filter="Gaziantep">Gaziantep</div>
+        <div id="nav-kayseri" class="nav-link team-link" data-filter="Kayserispor">Kayserispor</div>
+        <div id="nav-rizespor" class="nav-link team-link" data-filter="Çaykur Rizespor">Çaykur Rizespor</div>
+        <div id="nav-eyup" class="nav-link team-link" data-filter="Eyüpspor">Eyüpspor</div>
+        <div id="nav-konya" class="nav-link team-link" data-filter="Konyaspor">Konyaspor</div>
+        <div id="nav-alanya" class="nav-link team-link" data-filter="Alanyaspor">Alanyaspor</div>
+        <div id="nav-basaksehir" class="nav-link team-link" data-filter="Başakşehir">Başakşehir</div>
+        <div id="nav-kocaeli" class="nav-link team-link" data-filter="Kocaelispor">Kocaelispor</div>
     </div>
 
     <div class="content">
@@ -181,7 +183,7 @@
         // Maç Verileri
         const matches = [
             // ------------------------------------------
-            // 1. ESKİ MAÇ: KARAGÜMRÜK (Artık Tamamlandı)
+            // 1. ESKİ MAÇ: KARAGÜMRÜK (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -194,7 +196,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 2. ESKİ MAÇ: GAZİANTEP (Artık Tamamlandı)
+            // 2. ESKİ MAÇ: GAZİANTEP (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
@@ -207,7 +209,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 3. ESKİ MAÇ: KAYSERİSPOR (Artık Tamamlandı)
+            // 3. ESKİ MAÇ: KAYSERİSPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
@@ -221,7 +223,7 @@
             },
             
             // ------------------------------------------
-            // 4. YENİ MAÇ: RİZESPOR
+            // 4. YENİ MAÇ: RİZESPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -234,7 +236,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 5. YENİ MAÇ: EYÜPSPOR
+            // 5. YENİ MAÇ: EYÜPSPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
@@ -247,7 +249,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 6. YENİ MAÇ: KONYASPOR
+            // 6. YENİ MAÇ: KONYASPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
@@ -260,7 +262,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 7. YENİ MAÇ: ALANYASPOR
+            // 7. YENİ MAÇ: ALANYASPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
@@ -273,7 +275,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ
+            // 8. YENİ MAÇ: BEŞİKTAŞ DERBİSİ (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -286,7 +288,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 9. YENİ MAÇ: BAŞAKŞEHİR
+            // 9. YENİ MAÇ: BAŞAKŞEHİR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
@@ -299,7 +301,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 10. YENİ MAÇ: GÖZTEPE
+            // 10. YENİ MAÇ: GÖZTEPE (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
@@ -312,7 +314,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ
+            // 11. YENİ MAÇ: TRABZONSPOR DERBİSİ (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
@@ -325,7 +327,7 @@
                 league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
-            // 12. YENİ MAÇ: KOCAELİSPOR
+            // 12. YENİ MAÇ: KOCAELİSPOR (TAMAMLANDI)
             // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
