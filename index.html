@@ -56,6 +56,7 @@
             padding-left: 10px;
         }
         .content {
+            /* PC DAHİL TÜM EKRANLARDA MARJİN YOK, TAM GENİŞLİK */
             margin-left: 0; 
             padding: 40px;
             flex-grow: 1;
@@ -72,7 +73,8 @@
             background: none; 
             border: none; 
             color: #FFC300; 
-            font-size: 30px; 
+            /* İKON BÜYÜKLÜĞÜ */
+            font-size: 28px; 
             cursor: pointer;
             padding: 0;
             margin-right: 20px;
@@ -182,17 +184,18 @@
         <div id="nav-latest" class="nav-link" data-filter="latest">Son Yüklenenler</div>
         
         <div class="nav-link" style="margin-top: 20px; font-weight: bold; color: #FFC300;">Takımlar</div>
+        
         <div class="nav-link team-link" data-filter="Galatasaray">Galatasaray Maçları</div>
+        <div class="nav-link team-link" data-filter="Fenerbahçe">Fenerbahçe Maçları</div>
+        <div class="nav-link team-link" data-filter="Beşiktaş">Beşiktaş Maçları</div>
         <div class="nav-link team-link" data-filter="Trabzonspor">Trabzonspor Maçları</div>
-        <div class="nav-link team-link" data-filter="Trabzonspor">Beşiktaş Maçları</div>
-        <div class="nav-link team-link" data-filter="Trabzonspor">Fenerbahçe Maçları</div>
-        <div class="nav-link team-link" data-filter="Trabzonspor">Göztepe Maçları</div>
-        <div class="nav-link team-link" data-filter="Trabzonspor">Samsunspor Maçları</div>
+        <div class="nav-link team-link" data-filter="Göztepe">Göztepe Maçları</div>
+        <div class="nav-link team-link" data-filter="Samsunspor">Samsunspor Maçları</div>
     </div>
 
     <div class="content">
         <div class="header">
-            <button id="menu-toggle" style="font-size: 28px;">&#9776;</button>
+            <button id="menu-toggle">&#9776;</button>
             <h1 class="page-title" id="content-title">Son Yüklenenler</h1>
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Maç başlığında ara...">
@@ -213,7 +216,7 @@
         // Maç Verileri
         const matches = [
             // ------------------------------------------
-            // 1. KARAGÜMRÜK (LİNKLER TAMAM)
+            // 1. KARAGÜMRÜK 
             // ------------------------------------------
             {
                 id: 'gs-karagumruk-2025-08-15',
@@ -226,7 +229,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 2. GAZİANTEP (LİNKLER TAMAM)
+            // 2. GAZİANTEP 
             // ------------------------------------------
             {
                 id: 'gaziantep-gs-2025-08-22',
@@ -239,7 +242,7 @@
                 league: 'Süper Lig'
             },
             // ------------------------------------------
-            // 3. KAYSERİSPOR (LİNKLER TAMAM)
+            // 3. KAYSERİSPOR 
             // ------------------------------------------
             {
                 id: 'kayserispor-gs-2025-08-24',
@@ -253,7 +256,7 @@
             },
             
             // ------------------------------------------
-            // 4. RİZESPOR (LİNKLER TAMAM)
+            // 4. RİZESPOR 
             // ------------------------------------------
             {
                 id: 'gs-rizespor-2025-08-30',
@@ -266,7 +269,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 5. EYÜPSPOR (LİNKLER TAMAM)
+            // 5. EYÜPSPOR 
             // ------------------------------------------
             {
                 id: 'eyupspor-gs-2025-09-13',
@@ -279,7 +282,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 6. KONYASPOR (LİNKLER TAMAM)
+            // 6. KONYASPOR 
             // ------------------------------------------
             {
                 id: 'gs-konyaspor-2025-09-22',
@@ -292,7 +295,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 7. ALANYASPOR (LİNKLER TAMAM)
+            // 7. ALANYASPOR 
             // ------------------------------------------
             {
                 id: 'alanya-gs-2025-09-26',
@@ -305,7 +308,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 8. BEŞİKTAŞ DERBİSİ (LİNKLER TAMAM)
+            // 8. BEŞİKTAŞ DERBİSİ 
             // ------------------------------------------
             {
                 id: 'gs-bjk-derbi-2025-10-04',
@@ -318,7 +321,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 9. BAŞAKŞEHİR (LİNKLER TAMAM)
+            // 9. BAŞAKŞEHİR 
             // ------------------------------------------
             {
                 id: 'basaksehir-gs-2025-10-18',
@@ -331,7 +334,7 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 10. GÖZTEPE (LİNKLER TAMAM)
+            // 10. GÖZTEPE 
             // ------------------------------------------
             {
                 id: 'gs-goztepe-2025-10-26',
@@ -344,20 +347,20 @@
                 league: 'Süper Lig' 
             },
             // ------------------------------------------
-            // 11. TRABZONSPOR DERBİSİ (LİNKLER TAMAM)
+            // 11. TRABZONSPOR DERBİSİ 
             // ------------------------------------------
             {
                 id: 'gs-ts-derbi-2025-11-01',
                 title: 'Galatasaray 0 - 0 Trabzonspor DERBİ',
                 date: '2025-11-01',
-                cover: 'https://ssl.gstatic.com/onebox/media/sports/videos/vita/ttVAh1Uu-W57FR48_768x432.jpg', 
+                cover: 'https://beinsports.com.tr/mac-ozetleri-goller/super-lig/ozet/2025-2026/11/galatasaray-0-0-trabzonspor-mac-ozeti', 
                 driveLink: 'https://drive.google.com/file/d/1SPARX5gqHl0djZp33GkDSgVdsR0O9pIl/view?usp=sharing', 
                 team_1: 'Galatasaray',
                 team_2: 'Trabzonspor',
                 league: 'Süper Lig Derbi' 
             },
             // ------------------------------------------
-            // 12. KOCAELİSPOR (LİNKLER TAMAM)
+            // 12. KOCAELİSPOR 
             // ------------------------------------------
             {
                 id: 'kocaeli-gs-2025-11-09',
@@ -367,6 +370,40 @@
                 driveLink: 'https://drive.google.com/file/d/1GN2rNos9JAw66OiCMarvpDTuWesj7USI/view?usp=sharing', 
                 team_1: 'Kocaelispor',
                 team_2: 'Galatasaray',
+                league: 'Süper Lig' 
+            },
+            // ------------------------------------------
+            // EKSİK TAKIMLAR İÇİN YER TUTUCU MAÇLAR (FİLTRENİN DOĞRU ÇALIŞMASI İÇİN)
+            // Not: Maç verisi yoksa, filtreleme sonucu 'Maç bulunamadı' gösterecektir.
+            // ------------------------------------------
+            {
+                id: 'fenerbahce-dummy-1',
+                title: 'Fenerbahçe Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: 'https://via.placeholder.com/300x180/FFC300/000000?text=F+B+M', 
+                driveLink: '#',
+                team_1: 'Fenerbahçe',
+                team_2: 'Rakip',
+                league: 'Süper Lig' 
+            },
+            {
+                id: 'besiktas-dummy-1',
+                title: 'Beşiktaş Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: 'https://via.placeholder.com/300x180/121212/FFFFFF?text=B+J+K', 
+                driveLink: '#',
+                team_1: 'Beşiktaş',
+                team_2: 'Rakip',
+                league: 'Süper Lig' 
+            },
+             {
+                id: 'samsun-dummy-1',
+                title: 'Samsunspor Maçı (Örnek)',
+                date: '2024-01-01',
+                cover: 'https://via.placeholder.com/300x180/D50000/FFFFFF?text=SAMSUN', 
+                driveLink: '#',
+                team_1: 'Samsunspor',
+                team_2: 'Rakip',
                 league: 'Süper Lig' 
             }
         ];
@@ -383,13 +420,15 @@
             const card = document.createElement('div');
             card.className = 'match-card';
             
+            const isPlaceholder = match.driveLink === '#';
+
             card.innerHTML = `
                 <img src="${match.cover}" alt="${match.title} Kapağı" class="match-cover">
                 <div class="match-info">
                     <div class="match-title">${match.title}</div>
                     <div class="match-meta">${match.league} | ${formatDate(match.date)}</div>
-                    <a href="${match.driveLink}" target="_blank" class="download-button">
-                        İNDİR
+                    <a href="${match.driveLink}" target="_blank" class="download-button" ${isPlaceholder ? 'style="background-color: #666; cursor: default;"' : ''}>
+                        ${isPlaceholder ? 'LİNK EKLENECEK' : 'İNDİR'}
                     </a>
                 </div>
             `;
@@ -404,15 +443,27 @@
             contentTitle.textContent = title;
 
             if (title === 'Son Yüklenenler') {
-                filteredMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
-                filteredMatches = filteredMatches.slice(0, 8);
+                // Sadece gerçek maçları alıp tarihe göre sırala
+                const realMatches = filteredMatches.filter(m => m.driveLink !== '#');
+                realMatches.sort((a, b) => new Date(b.date) - new Date(a.date));
+                filteredMatches = realMatches.slice(0, 8);
             }
+            
+            // Filtreleme sonucu sadece yer tutucu maçlar kalırsa, "Maç bulunamadı" göster
+            const actualResults = filteredMatches.filter(m => m.driveLink !== '#');
 
-            if (filteredMatches.length === 0) {
-                container.innerHTML = '<p style="color: #666;">Bu kriterlere uygun maç bulunamadı.</p>';
-            } else {
+            if (actualResults.length === 0 && title !== 'Son Yüklenenler' && title.includes('Maçları')) {
+                // Eğer Takım Maçları kategorisi seçiliyse ve sonuç yoksa
+                container.innerHTML = '<p style="color: #666; font-size: 18px; padding-top: 50px;">Seçtiğin takım için henüz maç eklenmedi.</p>';
+            } else if (filteredMatches.length === 0) {
+                 container.innerHTML = '<p style="color: #666;">Bu kriterlere uygun maç bulunamadı.</p>';
+            } 
+            else {
                 filteredMatches.forEach(match => {
-                    container.appendChild(createMatchCard(match));
+                    // Yer tutucu (dummy) maçları gösterme
+                    if (match.driveLink !== '#') {
+                       container.appendChild(createMatchCard(match));
+                    }
                 });
             }
         }
@@ -454,10 +505,11 @@
         document.getElementById('search-input').addEventListener('keyup', function() {
             const searchTerm = this.value.toLowerCase();
             const filteredList = matches.filter(match => 
-                match.title.toLowerCase().includes(searchTerm) ||
+                (match.title.toLowerCase().includes(searchTerm) ||
                 match.team_1.toLowerCase().includes(searchTerm) ||
                 match.team_2.toLowerCase().includes(searchTerm) ||
-                match.league.toLowerCase().includes(searchTerm)
+                match.league.toLowerCase().includes(searchTerm)) &&
+                match.driveLink !== '#' // Yer tutucu maçları aramada da gösterme
             );
             renderMatches(filteredList, `Arama Sonuçları: "${this.value}"`);
             
