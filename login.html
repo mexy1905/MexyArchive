@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeus X Mexy Archive - Key Girişi</title>
+<style>
+:root {
+    --bg-color: #121212;
+    --panel-color: #1E1E1E;
+    --accent-color: #DC3545;
+    --hover-color: #b02a37;
+    --text-color: #E0E0E0;
+    --muted-color: #A0A0A0;
+    --border-color: #2a2a2a;
+}
+
+body {
+    margin:0;
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+#password-overlay {
+    position: fixed; inset: 0;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#password-box {
+    background: var(--panel-color);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid var(--accent-color);
+    width: 320px;
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+#password-box h2 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+#password-input {
+    width: 100%;
+    padding: 12px;
+    background: #2a2a2a;
+    border: 1px solid #333;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+#password-submit {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent-color);
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+#password-submit:hover {
+    background: var(--hover-color);
+}
+
+#password-message {
+    margin-top: 10px;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+</style>
+</head>
+<body>
+
+<div id="password-overlay">
+    <div id="password-box">
+        <h2>GİRİŞ YAP</h2>
+        <p style="color:var(--muted-color)">Devam etmek için key girin:</p>
+        <input type="password" id="password-input" placeholder="Key Gir">
+        <button id="password-submit" onclick="checkPassword()">Giriş Yap</button>
+        <div id="password-message"></div>
+    </div>
+</div>
+
+<div id="site-container" style="display:none;">
+    <h1 style="text-align:center;margin-top:50px;">✅ Site Açıldı!</h1>
+    <!-- Buraya gerçek site içeriği gelecek -->
+</div>
+
+<script>
+const validKeys = ["Mexy1905@", "Zeus1967@"];
+
+function checkPassword(){
+    const input = document.getElementById('password-input').value;
+    const msg = document.getElementById('password-message');
+    if(validKeys.includes(input)){
+        localStorage.setItem('site_key', input);
+        document.getElementById('password-overlay').style.display = 'none';
+        document.getElementById('site-container').style.display = 'block';
+    } else {
+        msg.innerText = "❌ Hatalı Key";
+    }
+}
+
+// Sayfa yüklendiğinde localStorage'dan kontrol
+window.addEventListener('load',()=>{
+    const storedKey = localStorage.getItem('site_key');
+    if(storedKey && validKeys.includes(storedKey)){
+        document.getElementById('password-overlay').style.display = 'none';
+        document.getElementById('site-container').style.display = 'block';
+    }
+});
+</script>
+
+</body>
+</html>
